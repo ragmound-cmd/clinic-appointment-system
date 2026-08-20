@@ -1,0 +1,767 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Doctor Profile &amp; Booking - CarePulse</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#455f88",
+              secondary: "#13696a",
+              "inverse-primary": "#adc7f7",
+              "on-tertiary-fixed-variant": "#3c475a",
+              "on-tertiary-container": "#949fb4",
+              "on-primary-container": "#86a0cd",
+              "secondary-fixed": "#a5eff0",
+              "on-error-container": "#93000a",
+              "primary-fixed": "#d6e3ff",
+              "surface-container-high": "#e4e9ee",
+              tertiary: "#162132",
+              "tertiary-container": "#2b3648",
+              "on-primary-fixed": "#001b3c",
+              "on-surface-variant": "#43474e",
+              "secondary-fixed-dim": "#89d3d4",
+              "primary-fixed-dim": "#adc7f7",
+              error: "#ba1a1a",
+              "outline-variant": "#c4c6cf",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed": "#002020",
+              "inverse-surface": "#2c3135",
+              "primary-container": "#1a365d",
+              "on-tertiary": "#ffffff",
+              "error-container": "#ffdad6",
+              "surface-container-low": "#eff4f9",
+              "surface-bright": "#f5faff",
+              "tertiary-fixed-dim": "#bcc7dd",
+              background: "#f5faff",
+              "surface-variant": "#dee3e8",
+              "on-secondary-container": "#1a6d6e",
+              "on-tertiary-fixed": "#111c2c",
+              outline: "#74777f",
+              "on-primary-fixed-variant": "#2d476f",
+              "surface-container-highest": "#dee3e8",
+              "tertiary-fixed": "#d8e3fa",
+              "on-secondary-fixed-variant": "#004f50",
+              "on-primary": "#ffffff",
+              "secondary-container": "#a2eded",
+              "surface-dim": "#d5dbdf",
+              "on-background": "#171c20",
+              primary: "#002045",
+              "on-secondary": "#ffffff",
+              "surface-container": "#e9eef3",
+              "inverse-on-surface": "#ecf1f6",
+              "on-surface": "#171c20",
+              surface: "#f5faff",
+              "on-error": "#ffffff",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "max-width": "1280px",
+              sm: "8px",
+              xs: "4px",
+              xl: "32px",
+              "margin-mobile": "16px",
+              lg: "24px",
+              md: "16px",
+              "margin-desktop": "64px",
+              base: "4px",
+              gutter: "24px",
+            },
+            fontFamily: {
+              "headline-lg-mobile": ["Inter"],
+              "body-md": ["Inter"],
+              "label-sm": ["Inter"],
+              "body-lg": ["Inter"],
+              "body-sm": ["Inter"],
+              "headline-sm": ["Inter"],
+              "headline-md": ["Inter"],
+              "label-md": ["Inter"],
+              "headline-lg": ["Inter"],
+            },
+            fontSize: {
+              "headline-lg-mobile": [
+                "32px",
+                {
+                  lineHeight: "40px",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "700",
+                },
+              ],
+              "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+              "label-sm": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+              "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+              "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+              "headline-sm": [
+                "24px",
+                { lineHeight: "32px", fontWeight: "600" },
+              ],
+              "headline-md": [
+                "32px",
+                { lineHeight: "40px", fontWeight: "600" },
+              ],
+              "label-md": [
+                "14px",
+                {
+                  lineHeight: "16px",
+                  letterSpacing: "0.05em",
+                  fontWeight: "600",
+                },
+              ],
+              "headline-lg": [
+                "48px",
+                {
+                  lineHeight: "56px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .icon-fill {
+        font-variation-settings: "FILL" 1;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background text-on-background antialiased min-h-screen flex flex-col"
+  >
+    <!-- Top Navigation Bar -->
+    <nav
+      class="bg-surface dark:bg-on-background shadow-sm shadow-[0px_4px_12px_rgba(26,54,93,0.05)] docked full-width top-0 sticky z-50"
+    >
+      <div
+        class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-md max-w-max-width mx-auto"
+      >
+        <!-- Brand -->
+        <div
+          class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim"
+        >
+          CarePulse
+        </div>
+        <!-- Web Navigation Links -->
+        <div class="hidden md:flex space-x-lg">
+          <a
+            class="text-secondary dark:text-secondary-fixed-dim font-bold font-label-md text-label-md active:scale-95 duration-200"
+            href="#"
+            >Doctors</a
+          >
+          <a
+            class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-tertiary-container transition-colors font-label-md text-label-md active:scale-95 duration-200 px-sm py-xs rounded"
+            href="#"
+            >My Bookings</a
+          >
+          <a
+            class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-tertiary-container transition-colors font-label-md text-label-md active:scale-95 duration-200 px-sm py-xs rounded"
+            href="#"
+            >Profile</a
+          >
+        </div>
+        <!-- Actions -->
+        <div class="flex items-center space-x-md">
+          <button
+            aria-label="Notifications"
+            class="p-2 rounded-full hover:bg-surface-container-low dark:hover:bg-tertiary-container transition-colors text-primary dark:text-primary-fixed-dim active:scale-95 duration-200"
+          >
+            <span class="material-symbols-outlined" data-icon="notifications"
+              >notifications</span
+            >
+          </button>
+          <div
+            class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-high"
+          >
+            <img
+              alt="Patient profile"
+              class="w-full h-full object-cover"
+              data-alt="A close-up portrait of a patient smiling gently in a well-lit, modern clinic waiting area. The lighting is soft and bright, emphasizing a clean, light-mode medical aesthetic. The color palette is minimal, focusing on bright whites and soft blues to convey trust and calm."
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1b5IH7oG2Zt7H_KjWfWoeZ6srBOsaW4Y5QvTYmEd4MpkGGBGQNSfJYr3r-o59DxlIr3boAfn7EuAGB31Npb-5V1TdCCoKA2JDeNmZsjzdiaQPThn9LkBFrKW24RAxityrJw-pQu5vI7mu45EeBQErENeNmI47l6tVdchGuEtqI6zY3wlbYEy4c2NMat-lStAM8hdJcQ8BfYDrVvjVZN2DpOEGjBaEE_qTBZvD8NtkNL4ha1qas_ee5A"
+            />
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Main Content Canvas -->
+    <main
+      class="flex-grow w-full max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-xl md:py-[48px] grid grid-cols-1 lg:grid-cols-12 gap-gutter pb-[100px] md:pb-xl"
+    >
+      <!-- Back Button (Mobile) -->
+      <div class="col-span-1 lg:col-span-12 mb-md lg:hidden">
+        <button
+          class="flex items-center text-primary font-label-md text-label-md hover:text-secondary transition-colors"
+        >
+          <span
+            class="material-symbols-outlined mr-sm text-[20px]"
+            data-icon="arrow_back"
+            >arrow_back</span
+          >
+          Back to Search
+        </button>
+      </div>
+      <!-- Left Column: Doctor Profile (Bento-style layout) -->
+      <div class="col-span-1 lg:col-span-7 flex flex-col gap-lg">
+        <!-- Hero Card -->
+        <div
+          class="bg-surface-container-lowest rounded-xl border border-surface-container-high shadow-[0px_4px_12px_rgba(26,54,93,0.05)] p-lg flex flex-col md:flex-row gap-lg items-start relative overflow-hidden"
+        >
+          <!-- Background Decoration -->
+          <div
+            class="absolute top-0 right-0 w-32 h-32 bg-primary-fixed-dim opacity-20 rounded-bl-full -z-0"
+          ></div>
+          <div
+            class="w-32 h-32 md:w-[160px] md:h-[160px] rounded-xl overflow-hidden shrink-0 shadow-sm border border-surface-variant relative z-10"
+          >
+            <img
+              alt="Dr. Sarah Jenkins"
+              class="w-full h-full object-cover"
+              data-alt="A professional headshot of an experienced doctor with a warm, reassuring smile. They are wearing a clean white lab coat over a professional blue shirt. The background is a slightly blurred, bright, modern medical office. The lighting is clear and flattering, matching a professional minimalistic clinical style."
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiy33nn1QVxviAtUMPppBds2jjWT0r5l4rjBlB8w9C4EHUOBjRHmmbs-x8muxYyDA22DULFfKogC6rMWojKX6SRKD2-W8TJz6GIhb3grG_kZRieELYDFkjCmpJ76K4k8RRW7j0q4qCO7TQK9Obb7zFfOMP6a-Kn2VFkA6pJKOglSbRFHm2jOvF5fW_Ah8bLuOWqLmpo4N-aDXtR7SzsEgM_isoc0BSiBPZzBkdqYUtpMMcOfkAAcUIaw"
+            />
+          </div>
+          <div class="flex-grow relative z-10">
+            <div class="flex justify-between items-start">
+              <div>
+                <h1
+                  class="font-headline-md text-headline-md text-primary mb-xs"
+                >
+                  Dr. Sarah Jenkins
+                </h1>
+                <p class="font-body-lg text-body-lg text-secondary font-medium">
+                  Cardiology Specialist
+                </p>
+              </div>
+              <div
+                class="flex items-center bg-surface-container-low px-sm py-xs rounded-full"
+              >
+                <span
+                  class="material-symbols-outlined text-secondary text-[16px] mr-[2px] icon-fill"
+                  data-icon="star"
+                  data-weight="fill"
+                  >star</span
+                >
+                <span class="font-label-md text-label-md text-primary"
+                  >4.9</span
+                >
+                <span
+                  class="font-body-sm text-body-sm text-on-surface-variant ml-xs"
+                  >(128)</span
+                >
+              </div>
+            </div>
+            <div class="mt-md flex flex-wrap gap-sm">
+              <span
+                class="px-sm py-xs bg-surface-bright border border-outline-variant rounded-full font-label-sm text-label-sm text-on-surface-variant flex items-center"
+              >
+                <span
+                  class="material-symbols-outlined text-[14px] mr-[4px]"
+                  data-icon="school"
+                  >school</span
+                >
+                MD, Harvard Medical
+              </span>
+              <span
+                class="px-sm py-xs bg-surface-bright border border-outline-variant rounded-full font-label-sm text-label-sm text-on-surface-variant flex items-center"
+              >
+                <span
+                  class="material-symbols-outlined text-[14px] mr-[4px]"
+                  data-icon="work"
+                  >work</span
+                >
+                15 Years Exp.
+              </span>
+              <span
+                class="px-sm py-xs bg-surface-bright border border-outline-variant rounded-full font-label-sm text-label-sm text-on-surface-variant flex items-center"
+              >
+                <span
+                  class="material-symbols-outlined text-[14px] mr-[4px]"
+                  data-icon="location_on"
+                  >location_on</span
+                >
+                CarePulse Central
+              </span>
+            </div>
+            <div
+              class="mt-md font-body-md text-body-md text-on-surface-variant"
+            >
+              Dr. Jenkins is a board-certified cardiologist with a focus on
+              preventative care and heart disease management. She is known for
+              her compassionate approach and thorough patient education.
+            </div>
+          </div>
+        </div>
+        <!-- Specialties Grid -->
+        <div
+          class="bg-surface-container-lowest rounded-xl border border-surface-container-high shadow-[0px_4px_12px_rgba(26,54,93,0.05)] p-lg"
+        >
+          <h2 class="font-headline-sm text-headline-sm text-primary mb-md">
+            Specialties &amp; Services
+          </h2>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-md">
+            <div
+              class="bg-surface-container-low p-md rounded-lg flex flex-col items-center text-center border border-transparent hover:border-secondary-fixed transition-colors"
+            >
+              <span
+                class="material-symbols-outlined text-secondary text-[32px] mb-sm"
+                data-icon="monitor_heart"
+                >monitor_heart</span
+              >
+              <span class="font-label-md text-label-md text-primary"
+                >ECG &amp; Holter</span
+              >
+            </div>
+            <div
+              class="bg-surface-container-low p-md rounded-lg flex flex-col items-center text-center border border-transparent hover:border-secondary-fixed transition-colors"
+            >
+              <span
+                class="material-symbols-outlined text-secondary text-[32px] mb-sm"
+                data-icon="favorite"
+                >favorite</span
+              >
+              <span class="font-label-md text-label-md text-primary"
+                >Hypertension</span
+              >
+            </div>
+            <div
+              class="bg-surface-container-low p-md rounded-lg flex flex-col items-center text-center border border-transparent hover:border-secondary-fixed transition-colors"
+            >
+              <span
+                class="material-symbols-outlined text-secondary text-[32px] mb-sm"
+                data-icon="directions_run"
+                >directions_run</span
+              >
+              <span class="font-label-md text-label-md text-primary"
+                >Stress Testing</span
+              >
+            </div>
+          </div>
+        </div>
+        <!-- Patient Reviews -->
+        <div
+          class="bg-surface-container-lowest rounded-xl border border-surface-container-high shadow-[0px_4px_12px_rgba(26,54,93,0.05)] p-lg"
+        >
+          <div class="flex justify-between items-center mb-md">
+            <h2 class="font-headline-sm text-headline-sm text-primary">
+              Patient Reviews
+            </h2>
+            <a
+              class="font-label-md text-label-md text-secondary hover:underline"
+              href="#"
+              >View All</a
+            >
+          </div>
+          <div class="space-y-md">
+            <!-- Review Item -->
+            <div
+              class="border-b border-surface-container-high pb-md last:border-0 last:pb-0"
+            >
+              <div class="flex items-center mb-sm">
+                <div
+                  class="w-8 h-8 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-label-md text-label-md mr-sm"
+                >
+                  MR
+                </div>
+                <div>
+                  <div class="font-label-md text-label-md text-primary">
+                    Michael R.
+                  </div>
+                  <div
+                    class="font-body-sm text-body-sm text-on-surface-variant flex items-center"
+                  >
+                    <span
+                      class="material-symbols-outlined text-secondary text-[12px] mr-[2px] icon-fill"
+                      data-icon="star"
+                      data-weight="fill"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-secondary text-[12px] mr-[2px] icon-fill"
+                      data-icon="star"
+                      data-weight="fill"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-secondary text-[12px] mr-[2px] icon-fill"
+                      data-icon="star"
+                      data-weight="fill"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-secondary text-[12px] mr-[2px] icon-fill"
+                      data-icon="star"
+                      data-weight="fill"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-secondary text-[12px] mr-[2px] icon-fill"
+                      data-icon="star"
+                      data-weight="fill"
+                      >star</span
+                    >
+                    <span class="ml-sm">2 days ago</span>
+                  </div>
+                </div>
+              </div>
+              <p class="font-body-md text-body-md text-on-surface-variant">
+                "Dr. Jenkins was extremely thorough. She took the time to
+                explain my test results in a way I could easily understand
+                without feeling rushed."
+              </p>
+            </div>
+            <!-- Review Item -->
+            <div
+              class="border-b border-surface-container-high pb-md last:border-0 last:pb-0"
+            >
+              <div class="flex items-center mb-sm">
+                <div
+                  class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-label-md text-label-md mr-sm"
+                >
+                  AT
+                </div>
+                <div>
+                  <div class="font-label-md text-label-md text-primary">
+                    Amanda T.
+                  </div>
+                  <div
+                    class="font-body-sm text-body-sm text-on-surface-variant flex items-center"
+                  >
+                    <span
+                      class="material-symbols-outlined text-secondary text-[12px] mr-[2px] icon-fill"
+                      data-icon="star"
+                      data-weight="fill"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-secondary text-[12px] mr-[2px] icon-fill"
+                      data-icon="star"
+                      data-weight="fill"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-secondary text-[12px] mr-[2px] icon-fill"
+                      data-icon="star"
+                      data-weight="fill"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-secondary text-[12px] mr-[2px] icon-fill"
+                      data-icon="star"
+                      data-weight="fill"
+                      >star</span
+                    >
+                    <span
+                      class="material-symbols-outlined text-outline-variant text-[12px] mr-[2px]"
+                      data-icon="star"
+                      >star</span
+                    >
+                    <span class="ml-sm">1 week ago</span>
+                  </div>
+                </div>
+              </div>
+              <p class="font-body-md text-body-md text-on-surface-variant">
+                "Great facility and attentive staff. The appointment started
+                exactly on time."
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Right Column: Booking Widget -->
+      <div class="col-span-1 lg:col-span-5 relative">
+        <div
+          class="sticky top-[100px] bg-surface-container-lowest rounded-xl border border-surface-container-high shadow-[0px_12px_24px_rgba(26,54,93,0.1)] overflow-hidden flex flex-col"
+        >
+          <!-- Header -->
+          <div class="bg-primary-container text-on-primary p-lg">
+            <h2 class="font-headline-sm text-headline-sm flex items-center">
+              <span
+                class="material-symbols-outlined mr-sm"
+                data-icon="calendar_month"
+                >calendar_month</span
+              >
+              Book Appointment
+            </h2>
+            <p class="font-body-sm text-body-sm text-primary-fixed mt-xs">
+              Select a date and time for your visit.
+            </p>
+          </div>
+          <div class="p-lg flex-grow flex flex-col">
+            <!-- Consultation Type -->
+            <div class="mb-lg">
+              <label
+                class="block font-label-md text-label-md text-primary mb-sm"
+                >Visit Type</label
+              >
+              <div class="grid grid-cols-2 gap-sm">
+                <label
+                  class="flex items-center p-sm border border-secondary bg-surface-bright rounded-lg cursor-pointer transition-colors relative"
+                >
+                  <input
+                    checked=""
+                    class="sr-only"
+                    name="visitType"
+                    type="radio"
+                  />
+                  <span
+                    class="material-symbols-outlined text-secondary mr-sm text-[20px]"
+                    data-icon="person"
+                    >person</span
+                  >
+                  <span class="font-label-sm text-label-sm text-primary"
+                    >In-Person</span
+                  >
+                  <div
+                    class="absolute inset-0 border-2 border-secondary rounded-lg pointer-events-none"
+                  ></div>
+                </label>
+                <label
+                  class="flex items-center p-sm border border-surface-container-high hover:border-outline-variant rounded-lg cursor-pointer transition-colors"
+                >
+                  <input class="sr-only" name="visitType" type="radio" />
+                  <span
+                    class="material-symbols-outlined text-on-surface-variant mr-sm text-[20px]"
+                    data-icon="videocam"
+                    >videocam</span
+                  >
+                  <span
+                    class="font-label-sm text-label-sm text-on-surface-variant"
+                    >Video Consult</span
+                  >
+                </label>
+              </div>
+            </div>
+            <!-- Date Picker (Mini Calendar Component) -->
+            <div class="mb-lg">
+              <div class="flex justify-between items-center mb-sm">
+                <span class="font-label-md text-label-md text-primary"
+                  >October 2023</span
+                >
+                <div class="flex space-x-sm">
+                  <button
+                    class="p-1 rounded hover:bg-surface-container-high text-on-surface-variant transition-colors"
+                  >
+                    <span
+                      class="material-symbols-outlined text-[20px]"
+                      data-icon="chevron_left"
+                      >chevron_left</span
+                    >
+                  </button>
+                  <button
+                    class="p-1 rounded hover:bg-surface-container-high text-on-surface-variant transition-colors"
+                  >
+                    <span
+                      class="material-symbols-outlined text-[20px]"
+                      data-icon="chevron_right"
+                      >chevron_right</span
+                    >
+                  </button>
+                </div>
+              </div>
+              <div
+                class="grid grid-cols-7 gap-1 text-center font-label-sm text-label-sm mb-xs text-on-surface-variant"
+              >
+                <div>S</div>
+                <div>M</div>
+                <div>T</div>
+                <div>W</div>
+                <div>T</div>
+                <div>F</div>
+                <div>S</div>
+              </div>
+              <div
+                class="grid grid-cols-7 gap-1 text-center font-body-sm text-body-sm"
+              >
+                <!-- Week 1 -->
+                <div class="p-1 text-outline-variant">1</div>
+                <div class="p-1 text-outline-variant">2</div>
+                <div class="p-1 text-outline-variant">3</div>
+                <div class="p-1 text-outline-variant">4</div>
+                <div class="p-1 text-outline-variant">5</div>
+                <div class="p-1 text-outline-variant">6</div>
+                <div class="p-1 text-outline-variant">7</div>
+                <!-- Week 2 -->
+                <div class="p-1 text-outline-variant">8</div>
+                <div class="p-1 text-outline-variant">9</div>
+                <div class="p-1 text-outline-variant">10</div>
+                <div class="p-1 text-outline-variant">11</div>
+                <div class="p-1 text-outline-variant">12</div>
+                <div class="p-1 text-outline-variant">13</div>
+                <div class="p-1 text-outline-variant">14</div>
+                <!-- Week 3 -->
+                <div class="p-1 text-outline-variant">15</div>
+                <div class="p-1 text-outline-variant">16</div>
+                <div class="p-1 text-outline-variant">17</div>
+                <button
+                  class="p-1 w-full rounded-full hover:bg-surface-container-highest transition-colors"
+                >
+                  18
+                </button>
+                <button
+                  class="p-1 w-full rounded-full bg-primary-container text-on-primary font-medium shadow-sm transition-colors relative"
+                >
+                  19
+                  <span
+                    class="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-secondary rounded-full"
+                  ></span>
+                </button>
+                <button
+                  class="p-1 w-full rounded-full hover:bg-surface-container-highest transition-colors"
+                >
+                  20
+                </button>
+                <div class="p-1 text-outline-variant">21</div>
+              </div>
+            </div>
+            <!-- Time Slots Grid -->
+            <div class="mb-xl flex-grow">
+              <label
+                class="block font-label-md text-label-md text-primary mb-sm"
+                >Available Times on Oct 19</label
+              >
+              <div class="grid grid-cols-3 gap-sm">
+                <button
+                  class="py-2 px-1 text-center rounded border border-surface-container-high font-body-sm text-body-sm text-on-surface-variant hover:border-secondary hover:text-secondary transition-colors"
+                >
+                  09:00 AM
+                </button>
+                <button
+                  class="py-2 px-1 text-center rounded border border-surface-container-high font-body-sm text-body-sm text-on-surface-variant hover:border-secondary hover:text-secondary transition-colors"
+                >
+                  09:30 AM
+                </button>
+                <button
+                  class="py-2 px-1 text-center rounded border border-secondary bg-surface-bright font-body-sm text-body-sm text-secondary font-medium shadow-sm transition-colors relative overflow-hidden"
+                >
+                  10:00 AM
+                  <div
+                    class="absolute inset-0 border-[1.5px] border-secondary rounded pointer-events-none"
+                  ></div>
+                </button>
+                <button
+                  class="py-2 px-1 text-center rounded border border-surface-container-high font-body-sm text-body-sm text-on-surface-variant hover:border-secondary hover:text-secondary transition-colors"
+                >
+                  11:00 AM
+                </button>
+                <button
+                  class="py-2 px-1 text-center rounded border border-surface-container-high font-body-sm text-body-sm text-outline-variant bg-surface-container-lowest opacity-50 cursor-not-allowed line-through"
+                  disabled=""
+                >
+                  11:30 AM
+                </button>
+                <button
+                  class="py-2 px-1 text-center rounded border border-surface-container-high font-body-sm text-body-sm text-on-surface-variant hover:border-secondary hover:text-secondary transition-colors"
+                >
+                  01:00 PM
+                </button>
+              </div>
+            </div>
+            <!-- Summary & Action -->
+            <div class="mt-auto border-t border-surface-container-high pt-lg">
+              <div
+                class="flex justify-between items-center mb-md font-body-sm text-body-sm text-on-surface-variant"
+              >
+                <span>Consultation Fee</span>
+                <span class="font-label-md text-label-md text-primary"
+                  >$150.00</span
+                >
+              </div>
+              <a href="./my-appointments.html"
+                class="w-full bg-secondary text-on-secondary font-label-md text-label-md py-[12px] px-lg rounded-lg shadow-sm hover:bg-on-secondary-container transition-colors flex justify-center items-center group"
+              >
+                Confirm Booking
+                <span
+                  class="material-symbols-outlined ml-sm text-[20px] group-hover:translate-x-1 transition-transform"
+                  data-icon="arrow_forward"
+                  >arrow_forward</span
+                >
+              </a>
+              <p
+                class="text-center font-body-sm text-body-sm text-on-surface-variant mt-sm text-[11px]"
+              >
+                No charges will be made until confirmation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Bottom Navigation Bar (Mobile Only) -->
+    <nav
+      class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface dark:bg-on-background border-t border-outline-variant dark:border-tertiary-container shadow-[0px_-4px_12px_rgba(26,54,93,0.05)]"
+    >
+      <div class="flex justify-around items-center px-sm py-xs w-full">
+        <a
+          class="flex flex-col items-center justify-center bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-secondary-fixed rounded-xl px-4 py-1 active:scale-90 transition-transform duration-150"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined mb-xs"
+            data-icon="medical_services"
+            >medical_services</span
+          >
+          <span class="font-label-sm text-label-sm">Doctors</span>
+        </a>
+        <a
+          class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:text-secondary dark:hover:text-secondary-fixed-dim active:scale-90 transition-transform duration-150"
+          href="#"
+        >
+          <span class="material-symbols-outlined mb-xs" data-icon="event_note"
+            >event_note</span
+          >
+          <span class="font-label-sm text-label-sm">My Bookings</span>
+        </a>
+        <a
+          class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:text-secondary dark:hover:text-secondary-fixed-dim active:scale-90 transition-transform duration-150"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined mb-xs"
+            data-icon="notifications"
+            >notifications</span
+          >
+          <span class="font-label-sm text-label-sm">Notifications</span>
+        </a>
+        <a
+          class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:text-secondary dark:hover:text-secondary-fixed-dim active:scale-90 transition-transform duration-150"
+          href="#"
+        >
+          <span class="material-symbols-outlined mb-xs" data-icon="person"
+            >person</span
+          >
+          <span class="font-label-sm text-label-sm">Profile</span>
+        </a>
+      </div>
+    </nav>
+  </body>
+</html>

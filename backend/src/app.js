@@ -11,22 +11,17 @@ import { success } from "./utils/api-response.js";
 export function createApp() {
   const app = express();
   const configuredOrigins = env.corsOrigin.split(",").map((origin) => origin.trim()).filter(Boolean);
-  const allowedOrigins = [...new Set([
-    ...configuredOrigins,
-    "http://localhost:5500",
-    "http://127.0.0.1:5500",
-  ])];
+ const allowedOrigins = env.corsOrigin
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
   const allowAllDevelopmentOrigins = env.nodeEnv !== "production";
 
   app.use(helmet());
-  app.use(cors({
-    origin: (requestOrigin, callback) => {
-      if (allowAllDevelopmentOrigins) return callback(null, true);
-      if (!requestOrigin || allowedOrigins.includes(requestOrigin)) return callback(null, true);
-      return callback(new Error("CORS origin is not allowed."));
-    },
-    credentials: true,
-  }));
+ app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+}));
   app.use(express.json({ limit: "1mb" }));
   const health = (_request, response) => success(response, { status: "ok" }, "Healthy");
   app.get("/health", health);

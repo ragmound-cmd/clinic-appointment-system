@@ -1,0 +1,469 @@
+<!doctype html>
+
+<html class="light" lang="en" data-page="appointments">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>CarePulse - Booking Confirmation</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-family: "Material Symbols Outlined", sans-serif;
+      }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#455f88",
+              secondary: "#13696a",
+              "inverse-primary": "#adc7f7",
+              "on-tertiary-fixed-variant": "#3c475a",
+              "on-tertiary-container": "#949fb4",
+              "on-primary-container": "#86a0cd",
+              "secondary-fixed": "#a5eff0",
+              "on-error-container": "#93000a",
+              "primary-fixed": "#d6e3ff",
+              "surface-container-high": "#e4e9ee",
+              tertiary: "#162132",
+              "tertiary-container": "#2b3648",
+              "on-primary-fixed": "#001b3c",
+              "on-surface-variant": "#43474e",
+              "secondary-fixed-dim": "#89d3d4",
+              "primary-fixed-dim": "#adc7f7",
+              error: "#ba1a1a",
+              "outline-variant": "#c4c6cf",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed": "#002020",
+              "inverse-surface": "#2c3135",
+              "primary-container": "#1a365d",
+              "on-tertiary": "#ffffff",
+              "error-container": "#ffdad6",
+              "surface-container-low": "#eff4f9",
+              "surface-bright": "#f5faff",
+              "tertiary-fixed-dim": "#bcc7dd",
+              background: "#f5faff",
+              "surface-variant": "#dee3e8",
+              "on-secondary-container": "#1a6d6e",
+              "on-tertiary-fixed": "#111c2c",
+              outline: "#74777f",
+              "on-primary-fixed-variant": "#2d476f",
+              "surface-container-highest": "#dee3e8",
+              "tertiary-fixed": "#d8e3fa",
+              "on-secondary-fixed-variant": "#004f50",
+              "on-primary": "#ffffff",
+              "secondary-container": "#a2eded",
+              "surface-dim": "#d5dbdf",
+              "on-background": "#171c20",
+              primary: "#002045",
+              "on-secondary": "#ffffff",
+              "surface-container": "#e9eef3",
+              "inverse-on-surface": "#ecf1f6",
+              "on-surface": "#171c20",
+              surface: "#f5faff",
+              "on-error": "#ffffff",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "max-width": "1280px",
+              sm: "8px",
+              xs: "4px",
+              xl: "32px",
+              "margin-mobile": "16px",
+              lg: "24px",
+              md: "16px",
+              "margin-desktop": "64px",
+              base: "4px",
+              gutter: "24px",
+            },
+            fontFamily: {
+              "headline-lg-mobile": ["Inter"],
+              "body-md": ["Inter"],
+              "label-sm": ["Inter"],
+              "body-lg": ["Inter"],
+              "body-sm": ["Inter"],
+              "headline-sm": ["Inter"],
+              "headline-md": ["Inter"],
+              "label-md": ["Inter"],
+              "headline-lg": ["Inter"],
+            },
+            fontSize: {
+              "headline-lg-mobile": [
+                "32px",
+                {
+                  lineHeight: "40px",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "700",
+                },
+              ],
+              "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+              "label-sm": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+              "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+              "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+              "headline-sm": [
+                "24px",
+                { lineHeight: "32px", fontWeight: "600" },
+              ],
+              "headline-md": [
+                "32px",
+                { lineHeight: "40px", fontWeight: "600" },
+              ],
+              "label-md": [
+                "14px",
+                {
+                  lineHeight: "16px",
+                  letterSpacing: "0.05em",
+                  fontWeight: "600",
+                },
+              ],
+              "headline-lg": [
+                "48px",
+                {
+                  lineHeight: "56px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-background text-on-background min-h-screen flex flex-col font-sans antialiased"
+  >
+    <!-- TopNavBar -->
+    <header
+      class="bg-surface shadow-[0px_4px_12px_rgba(26,54,93,0.05)] w-full sticky top-0 z-50"
+    >
+      <div
+        class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-md max-w-max-width mx-auto"
+      >
+        <div
+          class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2"
+        >
+          <span
+            class="material-symbols-outlined"
+            style="font-variation-settings: &quot;FILL&quot; 1"
+            >favorite</span
+          >
+          CarePulse
+        </div>
+        <nav class="hidden md:flex items-center gap-8">
+          <a
+            class="text-on-surface-variant hover:text-secondary font-label-md text-label-md hover:bg-surface-container-low transition-colors px-3 py-2 rounded-md active:scale-95 duration-200"
+            href="./index.html"
+            >Doctors</a
+          >
+          <a
+            class="text-secondary font-bold font-label-md text-label-md bg-secondary-container text-on-secondary-container px-3 py-2 rounded-md active:scale-95 duration-200 flex items-center gap-1"
+            href="./my-appointments.html"
+            >My Bookings</a
+          >
+          <a data-auth-login class="text-on-surface-variant hover:text-secondary font-label-md text-label-md px-3 py-2" href="./login.html">Sign in</a>
+          <a data-auth-register class="text-secondary font-bold font-label-md text-label-md px-3 py-2" href="./register.html">Register</a>
+        </nav>
+        <div class="flex items-center gap-4">
+          <button type="button"
+            aria-label="notifications"
+            class="text-primary hover:bg-surface-container-low p-2 rounded-full transition-colors active:scale-95 duration-200"
+          >
+            <span class="material-symbols-outlined">notifications</span>
+          </button>
+          <div
+            class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden cursor-pointer shadow-sm border border-outline-variant"
+          >
+            <img
+              alt="Patient profile"
+              class="w-full h-full object-cover"
+              data-alt="A professional headshot of a diverse healthcare patient. They are looking directly at the camera with a calm, friendly expression. The lighting is soft and flattering, reminiscent of a clinical but welcoming environment. The background is slightly blurred and neutral."
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSTympjOZy8TpTAxn8zw1bd6s2vEHgCce-XBGbmD-S5jqdseWtIOt4icPBbhOyaaiVjokRK8o_fjR7zvfz60xHld0SdzHnj1Y_2C8wgrijz9Ls1AWXCB6_Jf7jxnSQLua3_Opxl-GLfn0LKSbg8JyOHqjcRz0vgqmGo2SPSWt42zGRL1rdT04VB_hFLavJWvIZqr8iZW3JVVRkNUQsHNL8GK9lcu_FeLC7Bnp3-J4qhTRUrKUkCkoJMw"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+    <main
+      class="flex-grow w-full max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-xl pb-[100px] md:pb-xl flex flex-col gap-xl"
+    >
+      <!-- Success Hero Section -->
+      <section
+        class="flex flex-col items-center justify-center text-center pt-8 pb-4"
+      >
+        <div
+          class="w-20 h-20 rounded-full bg-secondary-container text-secondary flex items-center justify-center mb-6 shadow-sm"
+        >
+          <span
+            class="material-symbols-outlined text-[48px]"
+            style="font-variation-settings: &quot;FILL&quot; 1"
+            >check_circle</span
+          >
+        </div>
+        <h1
+          class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-2"
+        >
+          Local Appointment Selection
+        </h1>
+        <p id="appointment-status-message" class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+          Your booking with Dr. Sarah Jenkins has been successfully scheduled.
+          This is a local prototype selection and has not been booked.
+        </p>
+      </section>
+      <section id="appointment-empty-state" class="hidden bg-surface-container-lowest border border-outline-variant rounded-xl p-xl text-center" role="status" aria-live="polite">
+        <h2 class="font-headline-sm text-headline-sm text-primary mb-sm">No local appointment selection</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant mb-md">Choose a doctor, date, time, and visit type before continuing.</p>
+        <a class="text-secondary font-label-md text-label-md hover:underline" href="./index.html">Return to doctor directory</a>
+      </section>
+      <!-- Appointment Details Card -->
+      <section id="appointment-summary" class="w-full max-w-3xl mx-auto">
+        <div
+          class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-[0px_4px_12px_rgba(26,54,93,0.05)] overflow-hidden"
+        >
+          <div class="bg-primary-container p-6 text-on-primary">
+            <div class="flex justify-between items-start">
+              <div>
+                <span id="appointment-prototype-status"
+                  class="inline-flex items-center px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm mb-4"
+                >
+                  Selected locally
+                </span>
+                <h2 id="appointment-visit-type"
+                  class="font-headline-sm text-headline-sm text-on-primary mb-1"
+                >
+                  General Checkup
+                </h2>
+                <p id="appointment-doctor"
+                  class="font-body-md text-body-md text-inverse-primary opacity-90"
+                >
+                  Dr. Sarah Jenkins - Cardiologist
+                </p>
+              </div>
+              <div
+                class="w-16 h-16 rounded-full overflow-hidden border-2 border-on-primary shadow-sm bg-surface-variant hidden sm:block"
+              >
+                <img id="appointment-doctor-image"
+                  alt="Dr. Sarah Jenkins"
+                  class="w-full h-full object-cover"
+                  data-alt="A professional headshot of Dr. Sarah Jenkins, a female cardiologist wearing a white lab coat over professional attire. She has a warm, confident smile and a stethoscope around her neck. The background is a clean, well-lit medical clinic setting, slightly blurred out of focus."
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF64rtdjtysTXmJEE5xN9QGxiX3_Tl8f_9r1RmCbD-L2-SD5BVhpimUM_Dj54uI3d6mQlMG28b8PfY9A5_x_nUNUYgXIPdbm1qtmP6Z5rhy3VrkLj1ECO3xJuJKJCPpnrtKt6teIYQiatPBXsPShXurEP8H1wnB5fAziYLswIUUBWVgC0Ss0jrEoQoREwb4oqkiBeuH_1G8L2p7dMYJyTMxvsBA2_i6ZG1-UOIrY-IfpM62clKX6OdyQ"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="flex gap-4 items-start">
+              <div
+                class="w-12 h-12 rounded-full bg-surface-container-low text-primary flex items-center justify-center shrink-0"
+              >
+                <span class="material-symbols-outlined">event</span>
+              </div>
+              <div>
+                <h3
+                  class="font-label-md text-label-md text-on-surface-variant mb-1"
+                >
+                  Date &amp; Time
+                </h3>
+                <p id="appointment-date" class="font-body-lg text-body-lg text-primary font-medium">
+                  Monday, Oct 24, 2023
+                </p>
+                <p id="appointment-time" class="font-body-md text-body-md text-on-surface-variant">
+                  10:00 AM - 10:45 AM
+                </p>
+              </div>
+            </div>
+            <div id="appointment-location" class="hidden flex gap-4 items-start">
+              <div
+                class="w-12 h-12 rounded-full bg-surface-container-low text-primary flex items-center justify-center shrink-0"
+              >
+                <span class="material-symbols-outlined">location_on</span>
+              </div>
+              <div>
+                <h3
+                  class="font-label-md text-label-md text-on-surface-variant mb-1"
+                >
+                  Clinic Location
+                </h3>
+                <p class="font-body-lg text-body-lg text-primary font-medium">
+                  HeartCare Medical Center
+                </p>
+                <p class="font-body-md text-body-md text-on-surface-variant">
+                  123 Health Ave, Suite 400<br />New York, NY 10001
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="appointment-actions"
+            class="hidden p-6 bg-surface-container-low border-t border-outline-variant flex flex-col sm:flex-row justify-end gap-4 items-center"
+          >
+            <button type="button"
+              class="w-full sm:w-auto px-6 py-3 rounded-lg border border-primary text-primary font-label-md text-label-md hover:bg-surface-variant transition-colors active:scale-95 duration-200"
+            >
+              Cancel Appointment
+            </button>
+            <button type="button"
+              class="w-full sm:w-auto px-6 py-3 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md hover:bg-[#0f5455] shadow-sm transition-colors active:scale-95 duration-200 flex items-center justify-center gap-2"
+            >
+              <span class="material-symbols-outlined text-[20px]"
+                >calendar_add_on</span
+              >
+              Add to Calendar
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- Upcoming Appointments Dashboard Section -->
+      <section id="upcoming-appointments" class="hidden mt-8">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="font-headline-md text-headline-md text-primary">
+            Your Upcoming Appointments
+          </h2>
+          <a
+            class="text-secondary font-label-md text-label-md hover:underline flex items-center"
+            href="#"
+            >View all
+            <span class="material-symbols-outlined text-[18px]"
+              >chevron_right</span
+            ></a
+          >
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Appointment Card 1 -->
+          <div
+            class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-sm hover:shadow-[0px_12px_24px_rgba(26,54,93,0.1)] transition-shadow duration-300 flex flex-col h-full"
+          >
+            <div class="flex justify-between items-start mb-4">
+              <span
+                class="inline-flex items-center px-2 py-1 rounded bg-secondary-container text-on-secondary-container font-label-sm text-label-sm"
+              >
+                Upcoming
+              </span>
+              <div class="text-right">
+                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Nov 12
+                </p>
+                <p class="font-label-md text-label-md text-primary">2:30 PM</p>
+              </div>
+            </div>
+            <h3 class="font-headline-sm text-headline-sm text-primary mb-1">
+              Dermatology Consult
+            </h3>
+            <p class="font-body-md text-body-md text-on-surface-variant mb-4">
+              Dr. Emily Chen
+            </p>
+            <div
+              class="mt-auto flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm"
+            >
+              <span class="material-symbols-outlined text-[16px]"
+                >location_on</span
+              >
+              <span>SkinHealth Clinic</span>
+            </div>
+          </div>
+          <!-- Appointment Card 2 -->
+          <div
+            class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-sm hover:shadow-[0px_12px_24px_rgba(26,54,93,0.1)] transition-shadow duration-300 flex flex-col h-full"
+          >
+            <div class="flex justify-between items-start mb-4">
+              <span
+                class="inline-flex items-center px-2 py-1 rounded bg-surface-variant text-on-surface-variant font-label-sm text-label-sm"
+              >
+                Pending
+              </span>
+              <div class="text-right">
+                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Dec 05
+                </p>
+                <p class="font-label-md text-label-md text-primary">9:00 AM</p>
+              </div>
+            </div>
+            <h3 class="font-headline-sm text-headline-sm text-primary mb-1">
+              Annual Bloodwork
+            </h3>
+            <p class="font-body-md text-body-md text-on-surface-variant mb-4">
+              City Labs Inc.
+            </p>
+            <div
+              class="mt-auto flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm"
+            >
+              <span class="material-symbols-outlined text-[16px]"
+                >location_on</span
+              >
+              <span>Main St. Lab</span>
+            </div>
+          </div>
+          <!-- Add New Card -->
+          <div
+            class="border-2 border-dashed border-outline-variant rounded-xl p-5 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-surface-container-low hover:border-secondary transition-colors duration-300 min-h-[200px]"
+          >
+            <div
+              class="w-12 h-12 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center mb-3 group-hover:bg-secondary-container group-hover:text-secondary transition-colors"
+            >
+              <span class="material-symbols-outlined">add</span>
+            </div>
+            <h3 class="font-label-md text-label-md text-primary">
+              Book New Appointment
+            </h3>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- BottomNavBar (Mobile Only) -->
+    <nav
+      class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-sm py-xs bg-surface border-t border-outline-variant z-50 rounded-t-xl shadow-[0px_-4px_12px_rgba(26,54,93,0.05)]"
+    >
+      <a
+        class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-secondary active:scale-90 transition-transform duration-150"
+        href="./index.html"
+      >
+        <span class="material-symbols-outlined">medical_services</span>
+        <span class="font-label-sm text-label-sm mt-1">Doctors</span>
+      </a>
+      <a
+        class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-4 py-1 active:scale-90 transition-transform duration-150"
+        href="./my-appointments.html"
+      >
+        <span
+          class="material-symbols-outlined"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >event_note</span
+        >
+        <span class="font-label-sm text-label-sm mt-1">My Bookings</span>
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-secondary active:scale-90 transition-transform duration-150"
+        href="#"
+      >
+        <span class="material-symbols-outlined">notifications</span>
+        <span class="font-label-sm text-label-sm mt-1">Notifications</span>
+      </a>
+      <a
+        class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:text-secondary active:scale-90 transition-transform duration-150"
+        href="#"
+      >
+        <span class="material-symbols-outlined">person</span>
+        <span class="font-label-sm text-label-sm mt-1">Profile</span>
+      </a>
+    </nav>
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
